@@ -16,7 +16,7 @@ class Router extends MiniRouter {
     super();
     this.schemeName = schemeName;
     schemes.push(schemeName);
-    protocol.registerStandardSchemes([schemeName]);
+    protocol.registerSchemesAsPrivileged([{ scheme: schemeName, privileges: { standard: true, secure: true, supportFetchAPI: true     } }]); 
     app.on('ready', () => {
       let mProtocol = protocol;
       if (partitionKey) {
